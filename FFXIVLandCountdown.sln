@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVLandCountdown", "FFXIVLandCountdown\FFXIVLandCountdown.csproj", "{0453B5F8-704B-4BFD-91E5-EB999FA1D50B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandItem", "LandItem\LandItem.csproj", "{32CF61BA-6C99-4A5F-A90B-4361622BD19F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0453B5F8-704B-4BFD-91E5-EB999FA1D50B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0453B5F8-704B-4BFD-91E5-EB999FA1D50B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0453B5F8-704B-4BFD-91E5-EB999FA1D50B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0453B5F8-704B-4BFD-91E5-EB999FA1D50B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32CF61BA-6C99-4A5F-A90B-4361622BD19F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32CF61BA-6C99-4A5F-A90B-4361622BD19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32CF61BA-6C99-4A5F-A90B-4361622BD19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32CF61BA-6C99-4A5F-A90B-4361622BD19F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56B383AA-BBB3-4973-99C9-5C900DE962B7}
+	EndGlobalSection
+EndGlobal
