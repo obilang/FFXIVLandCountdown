@@ -12,20 +12,43 @@ namespace LandItem
 {
     public partial class LandItemControl : UserControl
     {
-        public enum ELandState
-        {
-            EMPTY,
-            OCCUPIED
-        }
+        public const float CD_HOUR = 10.0f;
+        public static TimeSpan sCdHour = TimeSpan.FromHours(CD_HOUR);
+        private LandItemData landItemData;
 
         public LandItemControl()
         {
             InitializeComponent();
         }
 
-        public void InitItem(int index, ELandState state)
+        public void CustomUpdate()
         {
-            this.IndexText.Text = index.ToString();
+            if (landItemData.LandState == ELandState.EMPTY)
+            {
+                this.StateText.Text = "空闲";
+                TimeSpan passedTime = DateTime.Now - landItemData.EmptyTime;
+                passedTime = TimeSpan.FromSeconds((int)passedTime.TotalSeconds);
+                if (passedTime.Hours < CD_HOUR)
+                {
+                    this.TimeText.Text = string.Format("倒计时 {0:c}", sCdHour.Subtract(passedTime));
+                }
+                else
+                {
+                    this.TimeText.Text = string.Format("已经过 {0:c}", passedTime.Subtract(sCdHour));
+                }
+            }
+            else
+            {
+                this.StateText.Text = "占有";
+                this.TimeText.Text = string.Empty;
+            }
+        }
+
+        public void InitItem(LandItemData itemData)
+        {
+            landItemData = itemData;
+            this.IndexText.Text = itemData.Index.ToString();
+            CustomUpdate();
         }
 
         private void LandItemControl_Load(object sender, EventArgs e)
@@ -33,6 +56,18 @@ namespace LandItem
 
         }
 
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            landItemData.LandState = ELandState.EMPTY;
+            landItemData.EmptyTime = DateTime.Now;
+            CustomUpdate();
+        }
 
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            landItemData.LandState = ELandState.OCCUPIED;
+            landItemData.EmptyTime = DateTime.MaxValue;
+            CustomUpdate();
+        }
     }
 }

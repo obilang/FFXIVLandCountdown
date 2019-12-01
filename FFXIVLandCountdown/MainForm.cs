@@ -20,11 +20,40 @@ namespace FFXIVLandCountdown
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LandItemControl landItem = new LandItemControl();
-            landItem.InitItem(66, LandItemControl.ELandState.EMPTY);
+            Timer timer = new Timer();
+            timer.Interval = (1 * 1000); // 1 secs
+            timer.Tick += new EventHandler(TimerTick);
+            timer.Start();
 
-            this.Controls.Add(landItem);
-            this.Controls.Clear();
+
+
+            //this.Controls.Clear();
+
+            DataManager.Instance.Init();
+            this.landItemLayoutPanel.Controls.Clear();
+            List<LandItemData> dataList = DataManager.Instance.LandItemDataList;
+            foreach (LandItemData data in dataList)
+            {
+                LandItemControl landItem = new LandItemControl();
+                landItem.InitItem(data);
+                this.landItemLayoutPanel.Controls.Add(landItem);
+                landItemControlList.Add(landItem);
+            }
         }
+
+        private void landItemControl1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            foreach (LandItemControl itemControl in landItemControlList)
+            {
+                itemControl.CustomUpdate();
+            }
+        }
+
+        private List<LandItemControl> landItemControlList = new List<LandItemControl>();
     }
 }
