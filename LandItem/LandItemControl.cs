@@ -69,5 +69,15 @@ namespace LandItem
             landItemData.EmptyTime = DateTime.MaxValue;
             CustomUpdate();
         }
+
+        private void MoreButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IndexText_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -12,6 +12,15 @@ namespace LandItem
         OCCUPIED
     }
 
+    public enum ERegion
+    {
+        GJGQ,
+        XYCMP,
+        HWC,
+        BYX
+    }
+
+
     public class LandItemData
     {
         public LandItemData(int index, ELandState landState, DateTime time)

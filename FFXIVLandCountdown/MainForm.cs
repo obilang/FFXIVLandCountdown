@@ -55,5 +55,10 @@ namespace FFXIVLandCountdown
         }
 
         private List<LandItemControl> landItemControlList = new List<LandItemControl>();
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataManager.Instance.SaveToFile();
+        }
     }
 }
