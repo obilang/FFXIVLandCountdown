@@ -31,13 +31,20 @@ namespace FFXIVLandCountdown
 
             DataManager.Instance.Init();
             this.landItemLayoutPanel.Controls.Clear();
-            List<LandItemData> dataList = DataManager.Instance.LandItemDataList;
-            foreach (LandItemData data in dataList)
+            Dictionary<ERegion, Dictionary<int, List<LandItemData>>> dataList = DataManager.Instance.GetLandItemList();
+
+            foreach (var regionPair in dataList)
             {
-                LandItemControl landItem = new LandItemControl();
-                landItem.InitItem(data);
-                this.landItemLayoutPanel.Controls.Add(landItem);
-                landItemControlList.Add(landItem);
+                foreach (var sectionPair in regionPair.Value)
+                {
+                    for (int i = 0; i < sectionPair.Value.Count; ++i)
+                    {
+                        LandItemControl landItem = new LandItemControl();
+                        landItem.InitItem(sectionPair.Value[i]);
+                        this.landItemLayoutPanel.Controls.Add(landItem);
+                        landItemControlList.Add(landItem);
+                    }
+                }
             }
         }
 

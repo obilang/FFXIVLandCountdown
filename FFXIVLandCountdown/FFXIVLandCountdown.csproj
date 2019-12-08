@@ -100,7 +100,7 @@
     <ProjectReference Include="..\LandItem\LandItem.csproj">
       <Project>{32CF61BA-6C99-4A5F-A90B-4361622BD19F}</Project>
       <Name>LandItem</Name>
-      <Private>False</Private>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>

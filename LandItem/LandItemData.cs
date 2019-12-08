@@ -17,7 +17,8 @@ namespace LandItem
         GJGQ,
         XYCMP,
         HWC,
-        BYX
+        BYX,
+        COUNT
     }
 
 
