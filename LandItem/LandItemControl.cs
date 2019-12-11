@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LandItemPopupForm;
 
 namespace LandItem
 {
@@ -72,12 +73,22 @@ namespace LandItem
 
         private void MoreButton_Click(object sender, EventArgs e)
         {
-
+            var formPopup = new ItemPopupForm(landItemData.EmptyTime);
+            formPopup.onFormClose += OnPopupFormCallback;
+            //var formPopup = new Form();
+            //var landItemPopup = new LandItemPopupControl();
+            //formPopup.Controls.Add(landItemPopup);
+            formPopup.ShowDialog(this);
         }
 
         private void IndexText_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void OnPopupFormCallback(DateTime targetTime)
+        {
+            landItemData.EmptyTime = targetTime;
         }
     }
 }

@@ -39,19 +39,52 @@ namespace FFXIVLandCountdown
         #endregion
 
         public const string SAVE_FILE_PATH = "save.txt";
+        private const int SECTION_COUNT = 20;
+        private const int LAND_COUNT = 6;
 
         public void Init()
         {
-            LoadSaveFile();
+            if(!LoadSaveFile())
+            {
+                ResetAllDate();
+            }
         }
 
-        private void LoadSaveFile()
+        private void ResetAllDate()
         {
             landItemList = new Dictionary<ERegion, Dictionary<int, List<LandItemData>>>();
             Dictionary<int, List<LandItemData>> landItemRegion = new Dictionary<int, List<LandItemData>>();
             List<LandItemData> landItemSection = new List<LandItemData>();
 
+            for (int i = 0; i < (int)ERegion.COUNT; ++i)
+            {
+                landItemRegion = new Dictionary<int, List<LandItemData>>();
+                landItemList.Add((ERegion)i, landItemRegion);
 
+                for (int j = 0; j < SECTION_COUNT; ++j)
+                {
+                    landItemSection = new List<LandItemData>();
+                    landItemRegion.Add(j + 1, landItemSection);
+
+                    for (int k = 0; k < LAND_COUNT; ++k)
+                    {
+                        LandItemData landItemData = new LandItemData(k + 1, ELandState.OCCUPIED, DateTime.MaxValue);
+                        landItemSection.Add(landItemData);
+                    }
+                }
+            }
+        }
+
+        private bool LoadSaveFile()
+        {
+            landItemList = new Dictionary<ERegion, Dictionary<int, List<LandItemData>>>();
+            Dictionary<int, List<LandItemData>> landItemRegion = new Dictionary<int, List<LandItemData>>();
+            List<LandItemData> landItemSection = new List<LandItemData>();
+
+            if (!File.Exists(SAVE_FILE_PATH))
+            {
+                return false;
+            }
 
             using (StreamReader file = new StreamReader(SAVE_FILE_PATH))
             {
@@ -98,6 +131,7 @@ namespace FFXIVLandCountdown
                 }
                 file.Close();
             }
+            return true;
         }
 
         public void SaveToFile()
