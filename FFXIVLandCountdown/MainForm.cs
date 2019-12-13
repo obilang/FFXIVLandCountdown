@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LandItem;
 using System.Reflection;
 
 namespace FFXIVLandCountdown
@@ -45,7 +44,7 @@ namespace FFXIVLandCountdown
                 Button regionSelectButton = RegionTemplateButton.Clone();
                 this.RegionLayoutPanel.Controls.Add(regionSelectButton);
                 regionSelectButton.Click += (buttonEventSender, EventArgs) => { RegionSelectButton_Click(buttonEventSender, EventArgs, (int)regionPair.Key); };
-                regionSelectButton.Text = regionPair.Key.ToString();
+                regionSelectButton.Text = GetRegionName(regionPair.Key);
                 if (firstLoop)
                 {
                     currentSelectedRegion = regionPair.Key;
@@ -63,18 +62,74 @@ namespace FFXIVLandCountdown
 
             }
             RefreshSelectedSection();
+            RefreshAvailableList();
+        }
+
+        private string GetRegionName(ERegion region)
+        {
+            switch (region)
+            {
+                case ERegion.BYX:
+                    return "白银乡";
+                case ERegion.GJGQ:
+                    return "高脚孤丘";
+                case ERegion.HWC:
+                    return "海雾村";
+                case ERegion.XYCMP:
+                    return "薰衣草苗圃";
+                default:
+                    return string.Empty;
+            }
         }
 
         private void RefreshSelectedSection()
         {
             this.landItemLayoutPanel.Controls.Clear();
+            foreach(var item in landItemControlList)
+            {
+                item.onDataUpdated -= OnLandItemDataUpdated;
+            }
+            landItemControlList.Clear();
+
+
             for (int i = 0; i < DataManager.Instance.GetLandItemList()[currentSelectedRegion][currentSelectedSection].Count; ++i)
             {
                 LandItemControl landItem = new LandItemControl();
                 landItem.InitItem(DataManager.Instance.GetLandItemList()[currentSelectedRegion][currentSelectedSection][i]);
                 this.landItemLayoutPanel.Controls.Add(landItem);
                 landItemControlList.Add(landItem);
+                landItem.onDataUpdated += OnLandItemDataUpdated;
             }
+        }
+
+        private void RefreshAvailableList()
+        {
+            this.AvailabelItemsLayoutPanel.Controls.Clear();
+            Dictionary<ERegion, Dictionary<int, List<LandItemData>>> dataList = DataManager.Instance.GetLandItemList();
+            foreach (var regionPair in dataList)
+            {
+                foreach (var sectionPair in regionPair.Value)
+                {
+                    for (int i = 0; i < sectionPair.Value.Count; ++i)
+                    {
+                        LandItemData data = sectionPair.Value[i];
+                        if (data.LandState == ELandState.EMPTY)
+                        {
+                            AvailableListItemControl availableItem = new AvailableListItemControl();
+                            availableItem.Init(data);
+                            //this.AvailabelItemsLayoutPanel.Controls.Add(availableItem);
+                            availableLandItemControlList.Add(availableItem);
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        private void OnLandItemDataUpdated()
+        {
+            RefreshAvailableList();
         }
 
         private void landItemControl1_Load(object sender, EventArgs e)
@@ -88,9 +143,15 @@ namespace FFXIVLandCountdown
             {
                 itemControl.CustomUpdate();
             }
+
+            foreach (AvailableListItemControl itemControl in availableLandItemControlList)
+            {
+                itemControl.CustomUpdate();
+            }
         }
 
         private List<LandItemControl> landItemControlList = new List<LandItemControl>();
+        private List<AvailableListItemControl> availableLandItemControlList = new List<AvailableListItemControl>();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -99,7 +160,6 @@ namespace FFXIVLandCountdown
 
         private void RegionSelectButton_Click(object sender, EventArgs e, int index)
         {
-            Console.WriteLine("11112" + index.ToString());
             currentSelectedRegion = (ERegion)index;
             currentSelectedSection = 1;
             RefreshSelectedSection();
@@ -107,7 +167,6 @@ namespace FFXIVLandCountdown
 
         private void SectionSelectButton_Click(object sender, EventArgs e, int index)
         {
-            Console.WriteLine("21112" + index.ToString());
             currentSelectedSection = index;
             RefreshSelectedSection();
         }
@@ -134,4 +193,19 @@ namespace FFXIVLandCountdown
             return instance;
         }
     }
+
+    //class AvailableItemSort : IComparer<AvailableListItemControl>
+    //{
+    //    public int Compare(int x, int y)
+    //    {
+    //        if (x == 0 || y == 0)
+    //        {
+    //            return 0;
+    //        }
+
+    //        // CompareTo() method 
+    //        return x.CompareTo(y);
+
+    //    }
+    //}
 }

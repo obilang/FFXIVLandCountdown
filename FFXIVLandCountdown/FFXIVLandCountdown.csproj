@@ -61,7 +61,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvailableListItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AvailableListItemControl.Designer.cs">
+      <DependentUpon>AvailableListItemControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataManager.cs" />
+    <Compile Include="ItemPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemPopupForm.Designer.cs">
+      <DependentUpon>ItemPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LandItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LandItemControl.Designer.cs">
+      <DependentUpon>LandItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LandItemData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +89,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AvailableListItemControl.resx">
+      <DependentUpon>AvailableListItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemPopupForm.resx">
+      <DependentUpon>ItemPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LandItemControl.resx">
+      <DependentUpon>LandItemControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,14 +125,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LandItem\LandItem.csproj">
-      <Project>{32CF61BA-6C99-4A5F-A90B-4361622BD19F}</Project>
-      <Name>LandItem</Name>
-      <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
@@ -117,7 +137,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\LandItem.dll" />
+    <Content Include="Resources\cancel.png" />
+    <Content Include="Resources\menu.png" />
+    <Content Include="Resources\reload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

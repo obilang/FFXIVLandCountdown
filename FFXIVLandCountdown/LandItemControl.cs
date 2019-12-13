@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LandItemPopupForm;
 
-namespace LandItem
+namespace FFXIVLandCountdown
 {
     public partial class LandItemControl : UserControl
     {
-        public const float CD_HOUR = 10.0f;
-        public static TimeSpan sCdHour = TimeSpan.FromHours(CD_HOUR);
+        public delegate void OnDataUpdated();
+        public event OnDataUpdated onDataUpdated;
+
         private LandItemData landItemData;
 
         public LandItemControl()
@@ -29,13 +29,13 @@ namespace LandItem
                 this.StateText.Text = "空闲";
                 TimeSpan passedTime = DateTime.Now - landItemData.EmptyTime;
                 passedTime = TimeSpan.FromSeconds((int)passedTime.TotalSeconds);
-                if (passedTime.Hours < CD_HOUR)
+                if (passedTime.Hours < LandItemData.CD_HOUR)
                 {
-                    this.TimeText.Text = string.Format("倒计时 {0:c}", sCdHour.Subtract(passedTime));
+                    this.TimeText.Text = string.Format("倒计时 {0:c}", LandItemData.sCdHour.Subtract(passedTime));
                 }
                 else
                 {
-                    this.TimeText.Text = string.Format("已经过 {0:c}", passedTime.Subtract(sCdHour));
+                    this.TimeText.Text = string.Format("已经过 {0:c}", passedTime.Subtract(LandItemData.sCdHour));
                 }
             }
             else
@@ -62,6 +62,7 @@ namespace LandItem
             landItemData.LandState = ELandState.EMPTY;
             landItemData.EmptyTime = DateTime.Now;
             CustomUpdate();
+            onDataUpdated();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace LandItem
             landItemData.LandState = ELandState.OCCUPIED;
             landItemData.EmptyTime = DateTime.MaxValue;
             CustomUpdate();
+            onDataUpdated();
         }
 
         private void MoreButton_Click(object sender, EventArgs e)
@@ -89,6 +91,17 @@ namespace LandItem
         private void OnPopupFormCallback(DateTime targetTime)
         {
             landItemData.EmptyTime = targetTime;
+            onDataUpdated();
+        }
+
+        private void TimeText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StateText_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

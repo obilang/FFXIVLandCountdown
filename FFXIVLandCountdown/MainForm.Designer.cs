@@ -33,10 +33,13 @@
             this.RegionLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SectionLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SectionSelectTemplateButton = new System.Windows.Forms.Button();
-            this.landItemControl1 = new LandItem.LandItemControl();
+            this.AvailabelItemsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.availableListItemControl1 = new FFXIVLandCountdown.AvailableListItemControl();
+            this.landItemControl1 = new FFXIVLandCountdown.LandItemControl();
             this.landItemLayoutPanel.SuspendLayout();
             this.RegionLayoutPanel.SuspendLayout();
             this.SectionLayoutPanel.SuspendLayout();
+            this.AvailabelItemsLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // RegionTemplateButton
@@ -57,7 +60,7 @@
             this.landItemLayoutPanel.Location = new System.Drawing.Point(156, 59);
             this.landItemLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.landItemLayoutPanel.Name = "landItemLayoutPanel";
-            this.landItemLayoutPanel.Size = new System.Drawing.Size(570, 401);
+            this.landItemLayoutPanel.Size = new System.Drawing.Size(876, 401);
             this.landItemLayoutPanel.TabIndex = 4;
             // 
             // RegionLayoutPanel
@@ -85,19 +88,35 @@
             this.SectionSelectTemplateButton.Text = "button1";
             this.SectionSelectTemplateButton.UseVisualStyleBackColor = true;
             // 
+            // AvailabelItemsLayoutPanel
+            // 
+            this.AvailabelItemsLayoutPanel.AutoScroll = true;
+            this.AvailabelItemsLayoutPanel.Controls.Add(this.availableListItemControl1);
+            this.AvailabelItemsLayoutPanel.Location = new System.Drawing.Point(20, 486);
+            this.AvailabelItemsLayoutPanel.Name = "AvailabelItemsLayoutPanel";
+            this.AvailabelItemsLayoutPanel.Size = new System.Drawing.Size(612, 268);
+            this.AvailabelItemsLayoutPanel.TabIndex = 7;
+            // 
+            // availableListItemControl1
+            // 
+            this.availableListItemControl1.Location = new System.Drawing.Point(3, 3);
+            this.availableListItemControl1.Name = "availableListItemControl1";
+            this.availableListItemControl1.Size = new System.Drawing.Size(437, 24);
+            this.availableListItemControl1.TabIndex = 0;
+            // 
             // landItemControl1
             // 
-            this.landItemControl1.Location = new System.Drawing.Point(2, 3);
-            this.landItemControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.landItemControl1.Location = new System.Drawing.Point(3, 3);
             this.landItemControl1.Name = "landItemControl1";
-            this.landItemControl1.Size = new System.Drawing.Size(221, 88);
-            this.landItemControl1.TabIndex = 3;
+            this.landItemControl1.Size = new System.Drawing.Size(222, 28);
+            this.landItemControl1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 479);
+            this.ClientSize = new System.Drawing.Size(1043, 768);
+            this.Controls.Add(this.AvailabelItemsLayoutPanel);
             this.Controls.Add(this.SectionLayoutPanel);
             this.Controls.Add(this.RegionLayoutPanel);
             this.Controls.Add(this.landItemLayoutPanel);
@@ -108,6 +127,7 @@
             this.landItemLayoutPanel.ResumeLayout(false);
             this.RegionLayoutPanel.ResumeLayout(false);
             this.SectionLayoutPanel.ResumeLayout(false);
+            this.AvailabelItemsLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -115,11 +135,13 @@
         #endregion
 
         private System.Windows.Forms.Button RegionTemplateButton;
-        private LandItem.LandItemControl landItemControl1;
         private System.Windows.Forms.FlowLayoutPanel landItemLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel RegionLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel SectionLayoutPanel;
         private System.Windows.Forms.Button SectionSelectTemplateButton;
+        private System.Windows.Forms.FlowLayoutPanel AvailabelItemsLayoutPanel;
+        private LandItemControl landItemControl1;
+        private AvailableListItemControl availableListItemControl1;
     }
 }
 

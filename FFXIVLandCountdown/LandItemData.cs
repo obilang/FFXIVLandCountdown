@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LandItem
+namespace FFXIVLandCountdown
 {
     public enum ELandState
     {
@@ -24,16 +24,23 @@ namespace LandItem
 
     public class LandItemData
     {
-        public LandItemData(int index, ELandState landState, DateTime time)
+        public const float CD_HOUR = 10.0f;
+        public static TimeSpan sCdHour = TimeSpan.FromHours(CD_HOUR);
+
+        public LandItemData(int index, ELandState landState, DateTime time, int sectionIndex, ERegion region)
         {
             this.Index = index;
             this.LandState = landState;
             this.EmptyTime = time;
+            this.SectionIndex = sectionIndex;
+            this.Region = region;
         }
 
 
         public ELandState LandState { get; set; }
         public int Index { get; set; }
         public DateTime EmptyTime { get; set; }
+        public int SectionIndex { get; set; }
+        public ERegion Region { get; set; }
     }
 }

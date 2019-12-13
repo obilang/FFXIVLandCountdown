@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using LandItem;
 
 
 
@@ -40,7 +39,7 @@ namespace FFXIVLandCountdown
 
         public const string SAVE_FILE_PATH = "save.txt";
         private const int SECTION_COUNT = 20;
-        private const int LAND_COUNT = 6;
+        private const int LAND_COUNT = 60;
 
         public void Init()
         {
@@ -68,7 +67,7 @@ namespace FFXIVLandCountdown
 
                     for (int k = 0; k < LAND_COUNT; ++k)
                     {
-                        LandItemData landItemData = new LandItemData(k + 1, ELandState.OCCUPIED, DateTime.MaxValue);
+                        LandItemData landItemData = new LandItemData(k + 1, ELandState.OCCUPIED, DateTime.MaxValue, j + 1, (ERegion)i);
                         landItemSection.Add(landItemData);
                     }
                 }
@@ -126,7 +125,7 @@ namespace FFXIVLandCountdown
                     ln = ln.Substring(ln.IndexOf(',') + 1);
                     DateTime currentDateTime = DateTime.Parse(ln);
 
-                    LandItemData landItemData = new LandItemData(currentIndex, currentState, currentDateTime);
+                    LandItemData landItemData = new LandItemData(currentIndex, currentState, currentDateTime, currentSection, currentRegion);
                     landItemSection.Add(landItemData);
                 }
                 file.Close();
