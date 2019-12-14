@@ -5,8 +5,11 @@ using System.Collections.Generic;
 namespace FFXIVLandCountdown
 {
 
-    public partial class AvailableListItemControl : UserControl
+    public partial class AvailableListItemControl : UserControl, IComparable<AvailableListItemControl>
     {
+        public delegate void OnDataUpdated();
+        public event OnDataUpdated onDataUpdated;
+
         private LandItemData landItemData;
 
         public AvailableListItemControl()
@@ -16,10 +19,29 @@ namespace FFXIVLandCountdown
 
         public void Init(LandItemData data)
         {
-            this.LocationLabel.Text = string.Format("{0} {1}-{2}", GetRegionName(data.Region), data.SectionIndex, data.Index);
+            this.LocationLabel.Text = string.Format("{0} {1}-{2}", GetRegionName(data.Region), data.SectionIndex, data.Index + 1);
             this.TimeLabel.Text = data.EmptyTime.ToString();
             landItemData = data;
             CustomUpdate();
+        }
+
+        public int CompareTo(AvailableListItemControl other)
+        {
+            if (this.landItemData.Bookmark)
+            {
+                if (other.landItemData.Bookmark)
+                {
+                    return this.landItemData.EmptyTime.CompareTo(other.landItemData.EmptyTime);
+                }
+                return -1;
+            }
+
+            if (other.landItemData.Bookmark)
+            {
+                return 1;
+            }
+
+            return this.landItemData.EmptyTime.CompareTo(other.landItemData.EmptyTime);
         }
 
         private string GetRegionName(ERegion region)
@@ -58,7 +80,23 @@ namespace FFXIVLandCountdown
                 {
                     this.TimeLabel.Text = string.Format("已经过 {0:c}", passedTime.Subtract(LandItemData.sCdHour));
                 }
+
+                if (landItemData.Bookmark)
+                {
+                    this.PinButton.BackgroundImage = Properties.Resources.tack_save_button_pined;
+                }
+                else
+                {
+                    this.PinButton.BackgroundImage = Properties.Resources.tack_save_button;
+                }
             }
+        }
+
+        private void PinButton_Click(object sender, EventArgs e)
+        {
+            landItemData.Bookmark = !landItemData.Bookmark;
+            CustomUpdate();
+            onDataUpdated();
         }
     }
 }

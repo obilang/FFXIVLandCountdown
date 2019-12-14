@@ -38,8 +38,8 @@ namespace FFXIVLandCountdown
         #endregion
 
         public const string SAVE_FILE_PATH = "save.txt";
-        private const int SECTION_COUNT = 20;
-        private const int LAND_COUNT = 60;
+        public const int SECTION_COUNT = 20;
+        public const int LAND_COUNT = 60;
 
         public void Init()
         {
@@ -67,7 +67,7 @@ namespace FFXIVLandCountdown
 
                     for (int k = 0; k < LAND_COUNT; ++k)
                     {
-                        LandItemData landItemData = new LandItemData(k + 1, ELandState.OCCUPIED, DateTime.MaxValue, j + 1, (ERegion)i);
+                        LandItemData landItemData = new LandItemData(k + 1, ELandState.OCCUPIED, DateTime.MaxValue, j + 1, (ERegion)i, false);
                         landItemSection.Add(landItemData);
                     }
                 }
@@ -123,9 +123,11 @@ namespace FFXIVLandCountdown
                     ln = ln.Substring(ln.IndexOf(',') + 1);
                     ELandState currentState = (ELandState)Enum.Parse(typeof(ELandState), ln.Substring(0, ln.IndexOf(',')), true);
                     ln = ln.Substring(ln.IndexOf(',') + 1);
-                    DateTime currentDateTime = DateTime.Parse(ln);
+                    DateTime currentDateTime = DateTime.Parse(ln.Substring(0, ln.IndexOf(',')));
+                    ln = ln.Substring(ln.IndexOf(',') + 1);
+                    bool bookmark = bool.Parse(ln);
 
-                    LandItemData landItemData = new LandItemData(currentIndex, currentState, currentDateTime, currentSection, currentRegion);
+                    LandItemData landItemData = new LandItemData(currentIndex, currentState, currentDateTime, currentSection, currentRegion, bookmark);
                     landItemSection.Add(landItemData);
                 }
                 file.Close();
@@ -137,7 +139,7 @@ namespace FFXIVLandCountdown
         {
             using (var stream = System.IO.File.CreateText(SAVE_FILE_PATH))
             {
-                stream.WriteLine(string.Format("Region, Section, Index, State, EmptyTime"));
+                stream.WriteLine(string.Format("Region, Section, Index, State, EmptyTime, Bookmark"));
 
                 foreach (var regionPair in landItemList)
                 {
@@ -145,12 +147,13 @@ namespace FFXIVLandCountdown
                     {
                         for (int i = 0; i < sectionPair.Value.Count; ++i)
                         {
-                            stream.WriteLine(string.Format("{0},{1},{2},{3},{4}",
+                            stream.WriteLine(string.Format("{0},{1},{2},{3},{4},{5}",
                                 regionPair.Key,
                                 sectionPair.Key,
                                 i,
                                 sectionPair.Value[i].LandState,
-                                sectionPair.Value[i].EmptyTime
+                                sectionPair.Value[i].EmptyTime,
+                                sectionPair.Value[i].Bookmark
                                 ));
                         }
                     }

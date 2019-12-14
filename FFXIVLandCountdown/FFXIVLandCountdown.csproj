@@ -140,6 +140,8 @@
     <Content Include="Resources\cancel.png" />
     <Content Include="Resources\menu.png" />
     <Content Include="Resources\reload.png" />
+    <None Include="Resources\tack-save-button_pined.png" />
+    <None Include="Resources\tack-save-button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

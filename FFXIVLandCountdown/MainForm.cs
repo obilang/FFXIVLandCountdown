@@ -29,9 +29,6 @@ namespace FFXIVLandCountdown
             timer.Start();
 
 
-
-            //this.Controls.Clear();
-
             DataManager.Instance.Init();
             this.landItemLayoutPanel.Controls.Clear();
             this.RegionLayoutPanel.Controls.Clear();
@@ -85,12 +82,17 @@ namespace FFXIVLandCountdown
         private void RefreshSelectedSection()
         {
             this.landItemLayoutPanel.Controls.Clear();
-            foreach(var item in landItemControlList)
+            foreach (var item in landItemControlList)
             {
                 item.onDataUpdated -= OnLandItemDataUpdated;
             }
             landItemControlList.Clear();
 
+
+            //for (int i = 0; i < DataManager.LAND_COUNT; ++i)
+            //{
+            //    int sortIndex =  
+            //}
 
             for (int i = 0; i < DataManager.Instance.GetLandItemList()[currentSelectedRegion][currentSelectedSection].Count; ++i)
             {
@@ -104,7 +106,13 @@ namespace FFXIVLandCountdown
 
         private void RefreshAvailableList()
         {
+            foreach (var item in availableLandItemControlList)
+            {
+                item.onDataUpdated -= OnLandItemDataUpdated;
+            }
+
             this.AvailabelItemsLayoutPanel.Controls.Clear();
+            availableLandItemControlList.Clear();
             Dictionary<ERegion, Dictionary<int, List<LandItemData>>> dataList = DataManager.Instance.GetLandItemList();
             foreach (var regionPair in dataList)
             {
@@ -117,18 +125,24 @@ namespace FFXIVLandCountdown
                         {
                             AvailableListItemControl availableItem = new AvailableListItemControl();
                             availableItem.Init(data);
-                            //this.AvailabelItemsLayoutPanel.Controls.Add(availableItem);
                             availableLandItemControlList.Add(availableItem);
                         }
                     }
                 }
             }
 
-
+            availableLandItemControlList.Sort();
+            foreach(var item in availableLandItemControlList)
+            {
+                item.onDataUpdated += OnLandItemDataUpdated;
+                this.AvailabelItemsLayoutPanel.Controls.Add(item);
+            }
         }
 
         private void OnLandItemDataUpdated()
         {
+            DataManager.Instance.SaveToFile();
+
             RefreshAvailableList();
         }
 
@@ -155,7 +169,7 @@ namespace FFXIVLandCountdown
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataManager.Instance.SaveToFile();
+            //DataManager.Instance.SaveToFile();
         }
 
         private void RegionSelectButton_Click(object sender, EventArgs e, int index)
@@ -193,19 +207,4 @@ namespace FFXIVLandCountdown
             return instance;
         }
     }
-
-    //class AvailableItemSort : IComparer<AvailableListItemControl>
-    //{
-    //    public int Compare(int x, int y)
-    //    {
-    //        if (x == 0 || y == 0)
-    //        {
-    //            return 0;
-    //        }
-
-    //        // CompareTo() method 
-    //        return x.CompareTo(y);
-
-    //    }
-    //}
 }

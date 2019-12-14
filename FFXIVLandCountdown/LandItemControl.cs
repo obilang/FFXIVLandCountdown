@@ -48,7 +48,7 @@ namespace FFXIVLandCountdown
         public void InitItem(LandItemData itemData)
         {
             landItemData = itemData;
-            this.IndexText.Text = itemData.Index.ToString();
+            this.IndexText.Text = (itemData.Index + 1).ToString();
             CustomUpdate();
         }
 

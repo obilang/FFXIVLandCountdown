@@ -27,13 +27,14 @@ namespace FFXIVLandCountdown
         public const float CD_HOUR = 10.0f;
         public static TimeSpan sCdHour = TimeSpan.FromHours(CD_HOUR);
 
-        public LandItemData(int index, ELandState landState, DateTime time, int sectionIndex, ERegion region)
+        public LandItemData(int index, ELandState landState, DateTime time, int sectionIndex, ERegion region, bool bookmark)
         {
             this.Index = index;
             this.LandState = landState;
             this.EmptyTime = time;
             this.SectionIndex = sectionIndex;
             this.Region = region;
+            this.Bookmark = bookmark;
         }
 
 
@@ -42,5 +43,6 @@ namespace FFXIVLandCountdown
         public DateTime EmptyTime { get; set; }
         public int SectionIndex { get; set; }
         public ERegion Region { get; set; }
+        public bool Bookmark { get; set; }
     }
 }

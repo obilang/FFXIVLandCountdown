@@ -38,23 +38,23 @@
             // 
             // MoreButton
             // 
+            this.MoreButton.BackgroundImage = global::FFXIVLandCountdown.Properties.Resources.menu;
             this.MoreButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MoreButton.Location = new System.Drawing.Point(186, 3);
-            this.MoreButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MoreButton.Location = new System.Drawing.Point(248, 3);
             this.MoreButton.Name = "MoreButton";
-            this.MoreButton.Size = new System.Drawing.Size(18, 21);
+            this.MoreButton.Size = new System.Drawing.Size(24, 24);
             this.MoreButton.TabIndex = 11;
             this.MoreButton.UseVisualStyleBackColor = true;
             this.MoreButton.Click += new System.EventHandler(this.MoreButton_Click);
             // 
             // DeleteButton
             // 
+            this.DeleteButton.BackgroundImage = global::FFXIVLandCountdown.Properties.Resources.cancel;
             this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DeleteButton.Location = new System.Drawing.Point(164, 3);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.DeleteButton.Location = new System.Drawing.Point(219, 3);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(18, 21);
+            this.DeleteButton.Size = new System.Drawing.Size(24, 24);
             this.DeleteButton.TabIndex = 10;
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -62,11 +62,11 @@
             // UpdateButton
             // 
             this.UpdateButton.AutoSize = true;
+            this.UpdateButton.BackgroundImage = global::FFXIVLandCountdown.Properties.Resources.reload;
             this.UpdateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.UpdateButton.Location = new System.Drawing.Point(141, 3);
-            this.UpdateButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UpdateButton.Location = new System.Drawing.Point(188, 3);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(18, 21);
+            this.UpdateButton.Size = new System.Drawing.Size(24, 24);
             this.UpdateButton.TabIndex = 9;
             this.UpdateButton.UseVisualStyleBackColor = true;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -75,10 +75,9 @@
             // 
             this.TimeText.AutoSize = true;
             this.TimeText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TimeText.Location = new System.Drawing.Point(53, 4);
-            this.TimeText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TimeText.Location = new System.Drawing.Point(71, 5);
             this.TimeText.Name = "TimeText";
-            this.TimeText.Size = new System.Drawing.Size(50, 16);
+            this.TimeText.Size = new System.Drawing.Size(63, 20);
             this.TimeText.TabIndex = 8;
             this.TimeText.Text = "10:00:00";
             // 
@@ -86,10 +85,9 @@
             // 
             this.StateText.AutoSize = true;
             this.StateText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.StateText.Location = new System.Drawing.Point(22, 4);
-            this.StateText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.StateText.Location = new System.Drawing.Point(29, 5);
             this.StateText.Name = "StateText";
-            this.StateText.Size = new System.Drawing.Size(30, 16);
+            this.StateText.Size = new System.Drawing.Size(37, 20);
             this.StateText.TabIndex = 7;
             this.StateText.Text = "空闲";
             // 
@@ -97,16 +95,15 @@
             // 
             this.IndexText.AutoSize = true;
             this.IndexText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.IndexText.Location = new System.Drawing.Point(9, 4);
-            this.IndexText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.IndexText.Location = new System.Drawing.Point(12, 5);
             this.IndexText.Name = "IndexText";
-            this.IndexText.Size = new System.Drawing.Size(14, 16);
+            this.IndexText.Size = new System.Drawing.Size(17, 20);
             this.IndexText.TabIndex = 6;
             this.IndexText.Text = "1";
             // 
             // LandItemControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MoreButton);
             this.Controls.Add(this.DeleteButton);
@@ -114,8 +111,9 @@
             this.Controls.Add(this.TimeText);
             this.Controls.Add(this.StateText);
             this.Controls.Add(this.IndexText);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "LandItemControl";
-            this.Size = new System.Drawing.Size(222, 28);
+            this.Size = new System.Drawing.Size(296, 32);
             this.Load += new System.EventHandler(this.LandItemControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
