@@ -38,7 +38,7 @@ namespace FFXIVLandCountdown
         #endregion
 
         public const string SAVE_FILE_PATH = "save.txt";
-        public const int SECTION_COUNT = 20;
+        public const int SECTION_COUNT = 18;
         public const int LAND_COUNT = 60;
 
         public void Init()

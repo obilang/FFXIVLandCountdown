@@ -28,13 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MoreButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.UpdateButton = new System.Windows.Forms.Button();
             this.TimeText = new System.Windows.Forms.Label();
             this.StateText = new System.Windows.Forms.Label();
             this.IndexText = new System.Windows.Forms.Label();
+            this.MoreButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.UpdateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // TimeText
+            // 
+            this.TimeText.AutoSize = true;
+            this.TimeText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TimeText.Location = new System.Drawing.Point(73, 5);
+            this.TimeText.Name = "TimeText";
+            this.TimeText.Size = new System.Drawing.Size(63, 20);
+            this.TimeText.TabIndex = 8;
+            this.TimeText.Text = "10:00:00";
+            // 
+            // StateText
+            // 
+            this.StateText.AutoSize = true;
+            this.StateText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.StateText.Location = new System.Drawing.Point(31, 5);
+            this.StateText.Name = "StateText";
+            this.StateText.Size = new System.Drawing.Size(37, 20);
+            this.StateText.TabIndex = 7;
+            this.StateText.Text = "空闲";
+            // 
+            // IndexText
+            // 
+            this.IndexText.AutoSize = true;
+            this.IndexText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.IndexText.Location = new System.Drawing.Point(11, 5);
+            this.IndexText.Name = "IndexText";
+            this.IndexText.Size = new System.Drawing.Size(17, 20);
+            this.IndexText.TabIndex = 6;
+            this.IndexText.Text = "1";
             // 
             // MoreButton
             // 
@@ -71,36 +101,6 @@
             this.UpdateButton.UseVisualStyleBackColor = true;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
-            // TimeText
-            // 
-            this.TimeText.AutoSize = true;
-            this.TimeText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TimeText.Location = new System.Drawing.Point(71, 5);
-            this.TimeText.Name = "TimeText";
-            this.TimeText.Size = new System.Drawing.Size(63, 20);
-            this.TimeText.TabIndex = 8;
-            this.TimeText.Text = "10:00:00";
-            // 
-            // StateText
-            // 
-            this.StateText.AutoSize = true;
-            this.StateText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.StateText.Location = new System.Drawing.Point(29, 5);
-            this.StateText.Name = "StateText";
-            this.StateText.Size = new System.Drawing.Size(37, 20);
-            this.StateText.TabIndex = 7;
-            this.StateText.Text = "空闲";
-            // 
-            // IndexText
-            // 
-            this.IndexText.AutoSize = true;
-            this.IndexText.Font = new System.Drawing.Font("Microsoft YaHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.IndexText.Location = new System.Drawing.Point(12, 5);
-            this.IndexText.Name = "IndexText";
-            this.IndexText.Size = new System.Drawing.Size(17, 20);
-            this.IndexText.TabIndex = 6;
-            this.IndexText.Text = "1";
-            // 
             // LandItemControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -113,7 +113,7 @@
             this.Controls.Add(this.IndexText);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "LandItemControl";
-            this.Size = new System.Drawing.Size(296, 32);
+            this.Size = new System.Drawing.Size(281, 32);
             this.Load += new System.EventHandler(this.LandItemControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

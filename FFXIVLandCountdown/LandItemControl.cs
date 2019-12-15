@@ -90,6 +90,7 @@ namespace FFXIVLandCountdown
 
         private void OnPopupFormCallback(DateTime targetTime)
         {
+            landItemData.LandState = ELandState.EMPTY;
             landItemData.EmptyTime = targetTime;
             onDataUpdated();
         }

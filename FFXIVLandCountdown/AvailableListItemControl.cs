@@ -98,5 +98,11 @@ namespace FFXIVLandCountdown
             CustomUpdate();
             onDataUpdated();
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            landItemData.LandState = ELandState.OCCUPIED;
+            onDataUpdated();
+        }
     }
 }

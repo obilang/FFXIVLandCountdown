@@ -16,6 +16,12 @@ namespace FFXIVLandCountdown
         private ERegion currentSelectedRegion = ERegion.COUNT;
         private int currentSelectedSection = 1;
 
+        private Button LastRegionSelectButton;
+        private Button LastSectionSelectButton;
+
+        private static Color normalColor = Color.FromArgb(240,240,240);
+        private static Color selectedColor = Color.FromArgb(0, 120, 215);
+
         public MainForm()
         {
             InitializeComponent();
@@ -39,6 +45,7 @@ namespace FFXIVLandCountdown
             foreach (var regionPair in dataList)
             {
                 Button regionSelectButton = RegionTemplateButton.Clone();
+                regionSelectButton.BackColor = normalColor;
                 this.RegionLayoutPanel.Controls.Add(regionSelectButton);
                 regionSelectButton.Click += (buttonEventSender, EventArgs) => { RegionSelectButton_Click(buttonEventSender, EventArgs, (int)regionPair.Key); };
                 regionSelectButton.Text = GetRegionName(regionPair.Key);
@@ -46,17 +53,26 @@ namespace FFXIVLandCountdown
                 {
                     currentSelectedRegion = regionPair.Key;
                     firstLoop = false;
+                    LastRegionSelectButton = regionSelectButton;
+                    LastRegionSelectButton.BackColor = selectedColor;
                 }
             }
 
+            firstLoop = true;
             // This is bad, but since the section count in each region is same, ok for now
             foreach (var sectionPair in dataList[currentSelectedRegion])
             {
                 Button sectionSelectButton = SectionSelectTemplateButton.Clone();
+                sectionSelectButton.BackColor = normalColor;
                 this.SectionLayoutPanel.Controls.Add(sectionSelectButton);
                 sectionSelectButton.Click += (buttonEventSender, EventArgs) => { SectionSelectButton_Click(buttonEventSender, EventArgs, (int)sectionPair.Key); };
                 sectionSelectButton.Text = sectionPair.Key.ToString();
-
+                if (firstLoop)
+                {
+                    LastSectionSelectButton = sectionSelectButton;
+                    firstLoop = false;
+                    LastSectionSelectButton.BackColor = selectedColor;
+                }
             }
             RefreshSelectedSection();
             RefreshAvailableList();
@@ -174,6 +190,10 @@ namespace FFXIVLandCountdown
 
         private void RegionSelectButton_Click(object sender, EventArgs e, int index)
         {
+            LastRegionSelectButton.BackColor = normalColor;
+            LastRegionSelectButton = (Button)sender;
+            LastRegionSelectButton.BackColor = selectedColor;
+
             currentSelectedRegion = (ERegion)index;
             currentSelectedSection = 1;
             RefreshSelectedSection();
@@ -181,8 +201,17 @@ namespace FFXIVLandCountdown
 
         private void SectionSelectButton_Click(object sender, EventArgs e, int index)
         {
+            LastSectionSelectButton.BackColor = normalColor;
+            LastSectionSelectButton = (Button)sender;
+            LastSectionSelectButton.BackColor = selectedColor;
+
             currentSelectedSection = index;
             RefreshSelectedSection();
+        }
+
+        private void SectionSelectTemplateButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

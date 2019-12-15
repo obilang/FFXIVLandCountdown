@@ -24,6 +24,10 @@ namespace FFXIVLandCountdown
         {
             InitializeComponent();
             this.targetTime = currentTime;
+            if (targetTime.Year == DateTime.MaxValue.Year)
+            {
+                targetTime = DateTime.Now;
+            }
 
             this.DayTextBox.Text = targetTime.Month.ToString() + "/" + targetTime.Day.ToString();
             this.HourTextBox.Text = targetTime.Hour.ToString();

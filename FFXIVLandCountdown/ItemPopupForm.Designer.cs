@@ -42,58 +42,70 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(129, 134);
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(253, 36);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.Size = new System.Drawing.Size(24, 20);
             this.label4.TabIndex = 17;
-            this.label4.Text = "分钟";
+            this.label4.Text = "分";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 136);
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(167, 36);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.Size = new System.Drawing.Size(24, 20);
             this.label3.TabIndex = 16;
-            this.label3.Text = "小时";
+            this.label3.Text = "时";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-18, 133);
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(76, 36);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(24, 20);
             this.label2.TabIndex = 15;
-            this.label2.Text = "日期";
+            this.label2.Text = "日";
             // 
             // MinTextBox
             // 
-            this.MinTextBox.Location = new System.Drawing.Point(166, 127);
+            this.MinTextBox.Location = new System.Drawing.Point(209, 34);
+            this.MinTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MinTextBox.Name = "MinTextBox";
-            this.MinTextBox.Size = new System.Drawing.Size(32, 20);
+            this.MinTextBox.Size = new System.Drawing.Size(41, 25);
             this.MinTextBox.TabIndex = 14;
             // 
             // HourTextBox
             // 
-            this.HourTextBox.Location = new System.Drawing.Point(94, 130);
+            this.HourTextBox.Location = new System.Drawing.Point(120, 34);
+            this.HourTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.HourTextBox.Name = "HourTextBox";
-            this.HourTextBox.Size = new System.Drawing.Size(32, 20);
+            this.HourTextBox.Size = new System.Drawing.Size(44, 25);
             this.HourTextBox.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 110);
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 13);
+            this.label1.Size = new System.Drawing.Size(159, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "设置空地空出来的时间";
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(263, 127);
+            this.CancelButton.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CancelButton.Location = new System.Drawing.Point(395, 34);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(39, 24);
+            this.CancelButton.Size = new System.Drawing.Size(64, 30);
             this.CancelButton.TabIndex = 11;
             this.CancelButton.Text = "取消";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -101,9 +113,11 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(213, 127);
+            this.ConfirmButton.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ConfirmButton.Location = new System.Drawing.Point(327, 34);
+            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(44, 22);
+            this.ConfirmButton.Size = new System.Drawing.Size(64, 30);
             this.ConfirmButton.TabIndex = 10;
             this.ConfirmButton.Text = "确认";
             this.ConfirmButton.UseVisualStyleBackColor = true;
@@ -111,16 +125,18 @@
             // 
             // DayTextBox
             // 
-            this.DayTextBox.Location = new System.Drawing.Point(19, 130);
+            this.DayTextBox.Location = new System.Drawing.Point(16, 34);
+            this.DayTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DayTextBox.Name = "DayTextBox";
-            this.DayTextBox.Size = new System.Drawing.Size(32, 20);
+            this.DayTextBox.Size = new System.Drawing.Size(58, 25);
             this.DayTextBox.TabIndex = 9;
             // 
             // ItemPopupForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(474, 79);
+            this.ControlBox = false;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -130,8 +146,14 @@
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.DayTextBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ItemPopupForm";
-            this.Text = "ItemPopupForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ItemPopupForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
