@@ -67,7 +67,7 @@ namespace FFXIVLandCountdown
 
                     for (int k = 0; k < LAND_COUNT; ++k)
                     {
-                        LandItemData landItemData = new LandItemData(k + 1, ELandState.OCCUPIED, DateTime.MaxValue, j + 1, (ERegion)i, false);
+                        LandItemData landItemData = new LandItemData(k, ELandState.OCCUPIED, DateTime.MaxValue, j + 1, (ERegion)i, false);
                         landItemSection.Add(landItemData);
                     }
                 }

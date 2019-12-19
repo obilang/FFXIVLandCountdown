@@ -72,7 +72,7 @@ namespace FFXIVLandCountdown
             {
                 TimeSpan passedTime = DateTime.Now - landItemData.EmptyTime;
                 passedTime = TimeSpan.FromSeconds((int)passedTime.TotalSeconds);
-                if (passedTime.Hours < LandItemData.CD_HOUR)
+                if (passedTime.TotalHours < LandItemData.CD_HOUR)
                 {
                     this.TimeLabel.Text = string.Format("倒计时 {0:c}", LandItemData.sCdHour.Subtract(passedTime));
                 }
